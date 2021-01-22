@@ -1,16 +1,14 @@
 import React from 'react';
 import {ThemeProvider} from 'styled-components';
 import './App.css';
-import {theme} from './config/theme'
+import {theme} from './config/theme';
+import Routes from './config/router';
 
 function App() {
   return (
     <ThemeProvider theme={theme}>
-      <div className="App">
-        <header>
-          Gestion BIbliothèque
-        </header>
-      </div>
+      <Routes>
+      </Routes>
     </ThemeProvider>
     
   );
