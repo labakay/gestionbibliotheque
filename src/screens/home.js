@@ -1,11 +1,17 @@
 import React from 'react'
-import { Link } from 'react-router-dom'
+import styled from 'styled-components'
 
 const Home = () => {
   return (
-    <div>
-      <p>Bienvenue dans ma bibliothèque en ligne</p>
-    </div>
+    <HomeContainer>
+      <h1>Bienvenue dans ma bibliothèque en ligne</h1>
+    </HomeContainer>
   )
 }
+
+const HomeContainer = styled.div`
+  text-align: center;
+  color: green;
+`
+
 export default Home

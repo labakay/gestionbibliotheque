@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react'
+import React from 'react'
 import styled from 'styled-components'
 import SignIn from '../components/signin'
 import axios from 'axios'
@@ -22,11 +22,11 @@ const submit = (e, formState, setErrorMessage, history) => {
       history.push('/home')
     })
     .catch(err => {
-      setErrorMessage('Une erreur est survenue')
+      setErrorMessage(err + 'Une erreur est survenue')
     })
 }
 
-const Login = ({ history }) => {
+const Login = () => {
   return (
     <LoginContainer>
       <SignIn submit={submit}></SignIn>

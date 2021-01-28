@@ -23,6 +23,7 @@ const Header = () => {
           <Logo url={url} alt='Logo' width='40px'></Logo>{' '}
         </Link>
         <Link to='/home'>Accueil</Link>
+        <Link to='/bokk'>Livres</Link>
         {isToken ? (
           <Logout handleClick={onClick}></Logout>
         ) : //Ne s'affiche qu'aprés refresh de la page (apres auth) malgrés le state comme je vous avais montré
