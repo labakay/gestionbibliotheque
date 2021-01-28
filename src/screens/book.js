@@ -1,53 +1,41 @@
-import React, { useState } from 'react'
+import React from 'react'
 import styled from 'styled-components'
+import BookForm from '../components/bookForm'
 import { useDispatch, useSelector } from 'react-redux'
-import ButtonSubmit from '../components/button'
-
-import { addBook } from '../actions/book'
+import { deleteBook } from '../actions/book'
 
 const Book = () => {
-  // const [inputValue, setInputValue] = useState('')
-  const [newBook, setNewBook] = useState({ name: '', author: '' })
-  const dispatch = useDispatch()
   const bookListe = useSelector(state => state.book.list)
-
-  const onSubmit = e => {
-    e.preventDefault()
-    dispatch(addBook(newBook))
-
-    setNewBook({ name: '', author: '' })
-  }
-
+  const dispatch = useDispatch()
   return (
-    <BookContainer>
-      <h1>Ajouter un livre</h1>
-      <StyledForm onSubmit={onSubmit}>
-        <div>
-          <StyledInput
-            value={newBook.author}
-            onChange={e => setNewBook({ ...newBook, author: e.target.value })}
-            // onChange={e => setInputValue(e.target.value)}
-            type='text'
-            placeholder='Auteur du livre'
-          ></StyledInput>
-        </div>
-        <div>
-          <StyledInput
-            value={newBook.name}
-            onChange={e => setNewBook({ ...newBook, name: e.target.value })}
-            // onChange={e => setInputValue(e.target.value)}
-            type='text'
-            placeholder='Nom du livre'
-          ></StyledInput>
-        </div>
-        <ButtonSubmit name='Ajouter' width='175px'></ButtonSubmit>
-      </StyledForm>
-      {bookListe.map(book => (
-        <p key={book.author}>
-          {book.name} {book.author}
-        </p>
-      ))}
-    </BookContainer>
+    <>
+      <BookForm></BookForm>
+      <BookContainer>
+        <h1>Liste des livres</h1>
+        <StyledTable>
+          <th>Auteur</th>
+          <th>Intitulé livre</th>
+          <th>Editer</th>
+          <th>Supprimer</th>
+          {bookListe.map(book => (
+            <tr key={book.id}>
+              <td>{book.value.author}</td>
+              <td>{book.value.name}</td>
+              <td>
+                <button onClick={() => dispatch(deleteBook(book.id))}>
+                  Editer
+                </button>
+              </td>
+              <td>
+                <button onClick={() => dispatch(deleteBook(book.id))}>
+                  Supprimer
+                </button>
+              </td>
+            </tr>
+          ))}
+        </StyledTable>
+      </BookContainer>
+    </>
   )
 }
 
@@ -55,7 +43,8 @@ const BookContainer = styled.div`
   text-align: center;
   color: green;
 `
-const StyledForm = styled.form`
+
+const StyledTable = styled.table`
   padding: 20px;
   font-size: 14px;
   width: 540px;
@@ -70,15 +59,6 @@ const StyledForm = styled.form`
   line-height: 1.5px;
   font-family: -apple-system, BlinkMacSystemFont, Segoe UI, Helvetica, Arial,
     sans-serif, Apple Color Emoji, Segoe UI Emoji;
-`
-
-const StyledInput = styled.input`
-  padding: 5px;
-  width: 60%;
-  height: 1.5rem;
-  margin-top: 15px;
-  margin-bottom: 10px;
-  border-radius: 3px;
 `
 
 export default Book
