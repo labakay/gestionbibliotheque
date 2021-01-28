@@ -9,11 +9,12 @@ import {
 
 import Login from '../screens/login'
 import Home from '../screens/home'
+import Header from '../screens/header'
 
 const Routes = () => {
   return (
     <Router>
-      {/* <NavMenu></NavMenu> */}
+      <Header></Header>
 
       <Switch>
         <Route exact path='/' component={Login}></Route>

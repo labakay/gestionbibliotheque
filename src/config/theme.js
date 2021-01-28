@@ -1,6 +1,6 @@
 const theme = {
   primary: 'light',
-  secondary: 'dark'
+  secondary: 'silver'
 }
 
 export { theme }

@@ -4,8 +4,7 @@ import { Link } from 'react-router-dom'
 const Home = () => {
   return (
     <div>
-      <p>Home</p>
-      <Link to='/'>To Login</Link>
+      <p>Bienvenue dans ma bibliothèque en ligne</p>
     </div>
   )
 }
