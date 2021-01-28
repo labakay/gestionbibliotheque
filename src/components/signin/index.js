@@ -2,8 +2,8 @@ import React, { useState } from 'react'
 import styled from 'styled-components'
 import { useHistory } from 'react-router-dom'
 import Logo from '../logo'
-import ButtonSubmit from '../button'
 import url from '../../assets/logo1.jpg'
+import ButtonSubmit from '../button'
 import ErrorMessage from '../error'
 
 const SignIn = ({ submit }) => {
@@ -96,5 +96,4 @@ const SignTitle = styled.div`
   font-weight: 300;
   letter-spacing: -0.5px;
 `
-
 export default SignIn
