@@ -17,8 +17,8 @@ const SignIn = ({ submit }) => {
         onSubmit={e => submit(e, formState, setErrorMessage, history)}
       >
         <Logo url={url} alt='Logo'></Logo>
-        <SignTitle> Veuillez vous authentifiez</SignTitle>
-        <SignInBody>
+        <SignTitle> Veuillez vous authentifier</SignTitle>
+        <>
           <SignInInput
             placeholder="Nom d'utilisateur"
             onChange={e =>
@@ -34,8 +34,8 @@ const SignIn = ({ submit }) => {
             type='password'
           ></SignInInput>
           <ErrorMessage errorMessage={errorMessage}></ErrorMessage>
-          <ButtonSubmit name='Se connecter'></ButtonSubmit>
-        </SignInBody>
+          <ButtonSubmit name='Se connecter' width='60%'></ButtonSubmit>
+        </>
         <SignInp>Bienvenue dans ma bibliothèque</SignInp>
       </SignInForm>
     </FormContainer>
@@ -43,6 +43,7 @@ const SignIn = ({ submit }) => {
 }
 
 const FormContainer = styled.div`
+  display: flex;
   padding: 20px;
   font-size: 14px;
   width: 540px;
@@ -66,17 +67,13 @@ const SignInForm = styled.form`
   justify-content: center;
 `
 
-const SignInp = styled.p`
-  font-weight: bold;
-`
-
-const SignInBody = styled.div``
+const SignInp = styled.p``
 
 const SignInInput = styled.input`
   margin-top: 5px;
   margin-bottom: 15px;
   display: block;
-  width: 100%;
+  width: 60%;
   font-size: 14px;
   line-height: 20px;
   vertical-align: middle;
@@ -90,7 +87,7 @@ const SignInInput = styled.input`
   padding: 5px;
 `
 
-const SignTitle = styled.div`
+const SignTitle = styled.h2`
   margin: 10% 0% 10% 0%;
   font-size: 24px;
   font-weight: 300;

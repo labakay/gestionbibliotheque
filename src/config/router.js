@@ -11,6 +11,7 @@ import Login from '../screens/login'
 import Home from '../screens/home'
 import Header from '../screens/header'
 import Book from '../screens/book'
+import PrivateRoute from '../utils/privateRoute'
 
 const Routes = () => {
   return (
@@ -19,9 +20,8 @@ const Routes = () => {
 
       <Switch>
         <Route exact path='/' component={Login}></Route>
-        <Route exact path='/home' component={Home}></Route>
-        <Route exact path='/book' component={Book}></Route>
-        {/* <PrivateRoute path="/home" component={Home}></PrivateRoute> */}
+        <PrivateRoute path='/home' component={Home}></PrivateRoute>
+        <PrivateRoute path='/book' component={Book}></PrivateRoute>
         <Redirect to='/'></Redirect>
       </Switch>
     </Router>

@@ -1,25 +1,26 @@
 import React, { useState } from 'react'
 import styled from 'styled-components'
-import { useDispatch, useSelector } from 'react-redux'
+import { useDispatch } from 'react-redux'
 import ButtonSubmit from '../button'
 import { uuid } from 'uuidv4'
 
 import { addBook } from '../../actions/book'
+import { Title } from '../texts'
 
 const BookForm = () => {
-  const [newBook, setNewBook] = useState({ name: '', author: '' })
+  const [newBook, setNewBook] = useState({ name: '', author: '', quantity: '' })
   const dispatch = useDispatch()
 
   const onSubmit = e => {
     e.preventDefault()
     dispatch(addBook({ id: uuid(), value: newBook }))
 
-    setNewBook({ name: '', author: '' })
+    setNewBook({ name: '', author: '', quantity: '' })
   }
 
   return (
     <BookFormContainer>
-      <h1>Ajouter un livre</h1>
+      <Title>Ajouter un livre</Title>
       <StyledForm onSubmit={onSubmit}>
         <div>
           <StyledInput
@@ -37,16 +38,21 @@ const BookForm = () => {
             placeholder='Nom du livre'
           ></StyledInput>
         </div>
+        <div>
+          <StyledInput
+            value={newBook.quantity}
+            onChange={e => setNewBook({ ...newBook, quantity: e.target.value })}
+            type='text'
+            placeholder='Quantité'
+          ></StyledInput>
+        </div>
         <ButtonSubmit name='Valider' width='175px'></ButtonSubmit>
       </StyledForm>
     </BookFormContainer>
   )
 }
 
-const BookFormContainer = styled.div`
-  text-align: center;
-  color: green;
-`
+const BookFormContainer = styled.div``
 const StyledForm = styled.form`
   padding: 20px;
   font-size: 14px;

@@ -5,6 +5,8 @@ import { useHistory } from 'react-router-dom'
 import Logo from '../components/logo'
 import Logout from '../components/logout'
 import url from '../assets/logo1.jpg'
+import url1 from '../assets/img.jpg'
+import { UserName, Linked } from '../components/texts'
 
 const Header = () => {
   const history = useHistory()
@@ -19,11 +21,23 @@ const Header = () => {
     <HeaderContainer>
       <div>
         <Link to='/home'>
-          {' '}
-          <Logo url={url} alt='Logo' width='40px'></Logo>{' '}
+          <Logo url={url} top='12px' alt='Logo' width='50px'></Logo>
         </Link>
-        <Link to='/home'>Accueil</Link>
-        <Link to='/bokk'>Livres</Link>
+        <Link to='/home'>
+          <Linked>Accueil</Linked>
+        </Link>
+        <Link to='/book'>
+          <Linked>Livres</Linked>
+        </Link>
+        <Logo
+          url={url1}
+          radius='30px'
+          float='right'
+          alt='Logo'
+          width='60px'
+          top='5px'
+        ></Logo>
+        <UserName>Ismaila</UserName>
         {isToken ? (
           <Logout handleClick={onClick}></Logout>
         ) : //Ne s'affiche qu'aprés refresh de la page (apres auth) malgrés le state comme je vous avais montré
@@ -35,7 +49,7 @@ const Header = () => {
 
 const HeaderContainer = styled.div`
   background-color: ${props => props.theme.secondary};
-  min-height: 3rem;
+  min-height: 5rem;
   padding-top: 15px;
   padding-left: 15px;
   color: white;
